@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body ng-app="HealthCalc">
+    <div ng-controller="HealthController">
+        <div>
+            <label>Weight(kg)</label>
+            <input type="number" ng-model="weight" />
+            <label>Height(cm)</label>
+            <input type="number" ng-model="height"  /><br />
+            <label>Age</label>
+            <!--<select ng-model="selectedAge" ng-options="age as age.name for age in ages"></select>-->
+            <input type="number" ng-model="selectedAge"/><br />
+            <select ng-model="selectedGender" ng-options="g as g.name for g in gender"></select>
+        </div>
+        <div>
+            <label>BMI:</label>
+            <p>{{bmi()}}</p>
+        </div>
+        <div>
+            <label>Healthy range:</label>
+            <p>{{range()}}</p>
+        </div>
+        <div id="kcals">
+            <p>How much you burn for different activites</p><br />
+            <ul>
+                <!--<li ng-repeat="need in needs"></li>-->
+                <li>Basal metabolic rate: {{need()| number:0}}</li>
+                <li>Lite eller ingen motion: {{need() * 1.2| number:0}}</li>
+                <li>Lätt motion (träning 1-3 dagar per vecka): {{need() * 1.375| number:0}}</li>
+                <li>Medel motion (träning 3-5 dagar per vecka): {{need() * 1.55 | number:0}}</li>
+                <li>Tung motion (träning 6-7 dagar per vecka): {{need() * 1.725| number:0}}</li>
+                <li>Mycket tung motion (2 gånger per dag, extra tungt): {{need() * 1.9| number:0}}</li>
+            </ul>
+        </div>
+    </div>
+    <script src="Scripts/angular.js"></script>
+    <script src="app/app.js"></script>
+</body>
+</html>
