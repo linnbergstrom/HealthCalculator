@@ -1,6 +1,10 @@
 ﻿(function () {
     angular.module('HealthCalc', [])
-
+    .filter("kcal", function () {
+        return function (input) {
+            return Math.round(input) + " kcal";
+        };
+    })
     .controller('HealthController', function ($scope) {
         $scope.weight = 65;
         $scope.height = 166;
@@ -40,5 +44,6 @@
             }
         }
     }
+
     );
 })();
